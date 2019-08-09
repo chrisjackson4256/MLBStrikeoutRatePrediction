@@ -24,10 +24,26 @@ The features used in the clustering algorithms are: "plate_x", "plate_z" (the ho
 
 We try several algorithms for the clustering, but settle on K-Means for simplicity.  The optimal number of clusters is chosen using the "Gap Statistic" (see ["Estimating the Number of Clusters in a Data Set Via the Gap Statistic"](http://web.stanford.edu/~hastie/Papers/gap.pdf) by Tibshirani, Walther and Hastie for details).
 
-Using data from 2016 and 2017 to train the clustering model, we find the optimal number of clusters is .  The pitches from the training and testing datasets are then each categorized using the cluster numbers.  Then, for each pitcher, we turn the counts of pitches of each cluster type into features.  In other words the data takes the shape:
+Using data from 2016 and 2017 to train the clustering model, we find the optimal number of clusters is 7.  The pitches from the training and testing datasets are then each categorized using the cluster numbers.  Then, for each pitcher, we turn the counts of pitches of each cluster type into features.  In other words the data takes the shape:
 
 ![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/number_pitch_clusters.png "pitch cluster number dataframe")
 
 The following bar chart shows, for each number of clusters, how many pitchers throw that number of different types of pitches.  The blue bars represent the data from the work done here, while the orange bars represent the clustering from the original paper by Martin.  It's clear that the clustering performed in this work results in smaller clusters and, thus, a higher average number of pitch types thrown.
 
 ![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/cluster_bar_plot.png "cluster number bar plot")
+
+### Model Building
+
+It has been a long-held belief that pitch speed and strike percentage are the leading predictors when it comes to predicting strikeout rate.  Therefore, we first train a baseline model using these features in a simple linear regression model.  The metric of choice to assess model performance here is _mean absolute error_ (MAE) and the simple baseline model achieves an MAE of 3.51%.
+
+We next train models using a dataset consisting of strike percentage and the pitch cluster counts as features.  First, we train a linear regression and "off-the-shelf" (OTS) Random Forest and AdaBoost models (using Scikit-Learn) to get a feel of the performance of the models on this data.  Finally, we optimize over the hyperparameters for each of the Random Forest, AdaBoost and XGBoost models.  All results are shown below.
+
+| Tables                      | MAE   |
+| -------------               |:-----:|
+| Baseline LR                 | 3.51% |
+| LR with Pitch Cluster Data  | 3.48% |
+| OTS Random Forest           | 3.73% |
+| OTS AdaBoost                | 3.39% |
+| Optimized Random Forest     | 3.34% |
+| Optimized AdaBoost          | 3.42% | 
+| Optimized XGBoost           | 3.41% | 
