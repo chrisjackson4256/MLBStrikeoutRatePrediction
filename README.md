@@ -38,7 +38,7 @@ It has been a long-held belief that pitch speed and strike percentage are the le
 
 We next train models using a dataset consisting of strike percentage and the pitch cluster counts as features.  First, we train a linear regression and "off-the-shelf" (OTS) Random Forest and AdaBoost models (using Scikit-Learn) to get a feel of the performance of the models on this data.  Finally, we optimize over the hyperparameters for each of the Random Forest, AdaBoost and XGBoost models.  All results are shown below.
 
-| Tables                      | MAE   |
+| Model                       | MAE   |
 | -------------               |:-----:|
 | Baseline LR                 | 3.51% |
 | LR with Pitch Cluster Data  | 3.48% |
