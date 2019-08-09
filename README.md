@@ -13,7 +13,9 @@ By "pitch types", we mean pitches classified by their speed, location and moveme
 
 The raw data is scraped from Baseball Savant using the pybaseball Python module. Since "short relievers" tend to enter game situations where they have a favorable advantage that bias their statistics, we remove them from the dataset by keeping only pitchers that have thrown at least 1000 pitches in a season AND that average 10 batters faced per appearance.
 
-We use data from 2016 and 2017 for clustering and predictive model training and 2018 for testing the predictive model.  After removing short relievers, the train data consists of 830555 data points from 241 unique pitchers, while the test data is made up of 400666 from 178 unique pitchers.
+We use data from 2016 and 2017 for clustering and predictive model training and 2018 for testing the predictive model.  After removing short relievers, the train data consists of 830555 data points from 241 unique pitchers, while the test data is made up of 400666 from 178 unique pitchers.  A snapshot of the train dataframe is shown below:
+
+![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/cluster_dataframe.png "dataframe used for clustering")
 
 
 ### Clustering the Pitch Types
@@ -26,7 +28,10 @@ Using data from 2016 and 2017 to train the clustering model, we find the optimal
 
 | Player ID     | Cluster 1 Count | Cluster 2 Count | ... | Cluster N Count |
 | ------------- |:---------------:| ---------------:| ---:| ---------------:|
-| 1             | 42              | 123             | ... | 14             :|
-| 2             | 0               | 345             | ... | 105            :|
+| 1             | 42              | 123             | ... | 14              |
+| 2             | 0               | 345             | ... | 105             |
+| 3             | 212             | 12              | ... | 47              |
+
+
 
 
