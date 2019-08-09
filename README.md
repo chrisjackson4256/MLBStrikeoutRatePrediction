@@ -26,11 +26,7 @@ We try several algorithms for the clustering, but settle on K-Means for simplici
 
 Using data from 2016 and 2017 to train the clustering model, we find the optimal number of clusters is .  The pitches from the training and testing datasets are then each categorized using the cluster numbers.  Then, for each pitcher, we turn the counts of pitches of each cluster type into features.  In other words the data takes the shape:
 
-| Player ID     | Cluster 1 Count | Cluster 2 Count | ... | Cluster N Count |
-| ------------- |:---------------:| ---------------:| ---:| ---------------:|
-| 1             | 42              | 123             | ... | 14              |
-| 2             | 0               | 345             | ... | 105             |
-| 3             | 212             | 12              | ... | 47              |
+![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/number_pitch_clusters.png "pitch cluster number dataframe")
 
 
 
