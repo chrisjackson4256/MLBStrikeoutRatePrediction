@@ -13,11 +13,20 @@ By "pitch types", we mean pitches classified by their speed, location and moveme
 
 The raw data is scraped from Baseball Savant using the pybaseball Python module. Since "short relievers" tend to enter game situations where they have a favorable advantage that bias their statistics, we remove them from the dataset by keeping only pitchers that have thrown at least 1000 pitches in a season AND that average 10 batters faced per appearance.
 
+We use data from 2016 and 2017 for clustering and predictive model training and 2018 for testing the predictive model.  After removing short relievers, the train data consists of 830555 data points from 241 unique pitchers, while the test data is made up of 400666 from 178 unique pitchers.
+
 
 ### Clustering the Pitch Types
 
 The features used in the clustering algorithms are: "plate_x", "plate_z" (the horizontal and vertical locations of the pitch as it crosses the plate), "pfx_x", "pfx_z" (the movement in the horizontal and vertical directions) and the release speed of the pitch.  These features are all normalized to lie beteen 0 and 1.
 
-We try several algorithms for the clustering, but settle on K-Means for simplicity.  The optimal number of clusters is chosen using the "Gap Statistic" (see ["Estimating the Number of Clusters in a Data Set Via the Gap Statistic"](http://web.stanford.edu/~hastie/Papers/gap.pdf) by Tibshirani, Walther and Hastie for details). 
+We try several algorithms for the clustering, but settle on K-Means for simplicity.  The optimal number of clusters is chosen using the "Gap Statistic" (see ["Estimating the Number of Clusters in a Data Set Via the Gap Statistic"](http://web.stanford.edu/~hastie/Papers/gap.pdf) by Tibshirani, Walther and Hastie for details).
+
+Using data from 2016 and 2017 to train the clustering model, we find the optimal number of clusters is .  The pitches from the training and testing datasets are then each categorized using the cluster numbers.  Then, for each pitcher, we turn the counts of pitches of each cluster type into features.  In other words the data takes the shape:
+
+| Player ID     | Cluster 1 Count | Cluster 2 Count | ... | Cluster N Count |
+| ------------- |:---------------:| ---------------:| ---:| ---------------:|
+| 1             | 42              | 123             | ... | 14             :|
+| 2             | 0               | 345             | ... | 105            :|
 
 
