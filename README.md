@@ -28,6 +28,6 @@ Using data from 2016 and 2017 to train the clustering model, we find the optimal
 
 ![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/number_pitch_clusters.png "pitch cluster number dataframe")
 
-The following bar chart shows, for each number of clusters, how many pitchers throw that number of different types of pitches.  The blue bars represent the data from the original paper by Martin, while the orange bars represent the work done here.  It's clear that the clustering performed in this work results in smaller clusters and, thus, a higher average number of pitch types thrown.
+The following bar chart shows, for each number of clusters, how many pitchers throw that number of different types of pitches.  The blue bars represent the data from the work done here, while the orange bars represent the clustering from the original paper by Martin.  It's clear that the clustering performed in this work results in smaller clusters and, thus, a higher average number of pitch types thrown.
 
 ![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/cluster_bar_plot.png "cluster number bar plot")
