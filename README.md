@@ -36,7 +36,7 @@ The following bar chart shows, for each number of clusters, how many pitchers th
 
 It has been a long-held belief that pitch speed and strike percentage are the leading predictors when it comes to predicting strikeout rate.  Therefore, we first train a baseline model using these features in a simple linear regression model.  The metric of choice to assess model performance here is _mean absolute error_ (MAE) and the simple baseline model achieves an MAE of 3.51%.
 
-We next train models using a dataset consisting of strike percentage and the pitch cluster counts as features.  First, we train a linear regression and "off-the-shelf" (OTS) Random Forest and AdaBoost models (using Scikit-Learn) to get a feel of the performance of the models on this data.  Finally, we optimize over the hyperparameters for each of the Random Forest, AdaBoost and XGBoost models.  All results are shown below.
+We next train models using a dataset consisting of strike percentage and the pitch cluster counts as features.  First, we train a linear regression and "off-the-shelf" (OTS) Random Forest and AdaBoost models (using Scikit-Learn) to get a feel of the performance of the models on this data.  Finally, we optimize over the hyperparameters for each of the Random Forest, AdaBoost and XGBoost models.  All results on the test dataset are shown below.
 
 | Model                       | MAE   |
 | -------------               |:-----:|
@@ -47,3 +47,7 @@ We next train models using a dataset consisting of strike percentage and the pit
 | Optimized Random Forest     | 3.34% |
 | Optimized AdaBoost          | 3.42% | 
 | Optimized XGBoost           | 3.41% | 
+
+The optimized random forest achieves the lowest MAE at 3.34% whis is very close to the best results reported by Martin (3.31%).  Finally, below, we show the predicted vs. actual strikeout percentages for the optimized random forest.
+
+![alt text](https://github.com/chrisjackson4256/MLBStrikeoutRatePrediction/blob/master/predicted_vs_actual.png "cluster number bar plot")
